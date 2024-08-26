@@ -3,10 +3,14 @@ use std::io::Write;
 
 fn main() -> std::io::Result<()> {
     // Define the CHIP-8 program opcodes and sprite data
-    let chip8_program: [u8; 6] = [
-        0x00, 0xE0, // LD V0, 0xA0
-        0x00, 0xE0, // LD V1, 0x0C
+    let chip8_program: [u8; 14] = [
+        0x00, 0xE0, // Clear screen
         0xA2, 0x20, // LD I, 0x220
+        0xA2, 0x30, // LD I, 0x230
+        0x12, 0x0A, // Jump to 0x210
+        0xA2, 0x40, // LD I, 0x240 (this will be skipped)
+        0xA2, 0x34, // LD I, 0x250
+        0x00, 0xDF, // Exit
     ];
 
     // Create a new file for the CHIP-8 program
